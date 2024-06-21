@@ -11,15 +11,15 @@
     <context:annotation-config/>
     <context:component-scan base-package="pl.keruzam"/>
 
-    <!-- DataSource configuration
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/your_database"/>
-        <property name="username" value="your_username"/>
-        <property name="password" value="your_password"/>
-        <property name="maximumPoolSize" value="10"/>
-        <property name="poolName" value="springHikariCP"/>
-    </bean>-->
+    <!-- DataSource configuration -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/keruzam"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="..."/>
+        <property name="initialSize" value="5"/>
+        <property name="maxTotal" value="10"/>
+    </bean>
 
     <!-- SessionFactory configuration -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
