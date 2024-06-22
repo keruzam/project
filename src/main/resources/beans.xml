@@ -11,14 +11,19 @@
     <context:annotation-config/>
     <context:component-scan base-package="pl.keruzam"/>
 
+    <!-- Load properties from external file -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:db.properties"/>
+    </bean>
+
     <!-- DataSource configuration -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/keruzam"/>
-        <property name="username" value="postgres"/>
-        <property name="password" value="..."/>
-        <property name="initialSize" value="5"/>
-        <property name="maxTotal" value="10"/>
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="initialSize" value="${initialSize}"/>
+        <property name="maxTotal" value="${maxTotal}"/>
     </bean>
 
     <!-- SessionFactory configuration -->
