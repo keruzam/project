@@ -15,6 +15,11 @@
             <url>https://repo.maven.apache.org/maven2</url>
         </repository>
         <repository>
+            <id>repo1</id>
+            <name>repo1</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
             <id>spring-releases</id>
             <url>https://repo.spring.io/release</url>
         </repository>
@@ -33,7 +38,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring.version>6.1.9</spring.version>
+        <spring.version>6.1.10</spring.version>
+        <security.version>6.3.1</security.version>
     </properties>
 
     <dependencies>
@@ -88,6 +94,23 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- SPRING SECURITY -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
         <!-- Apache DBCP2 for connection pooling -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -99,7 +122,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
-
 
         <!-- Testing -->
         <dependency>
@@ -135,6 +157,38 @@
             <version>2.0.1</version>
         </dependency>
 
+        <!-- MyFaces -->
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-impl</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.openwebbeans</groupId>
+            <artifactId>openwebbeans-jsf</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <!-- Jakarta Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- PrimeFaces
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>14.0.0</version>
+            <classifier>jakarta</classifier>
+        </dependency>-->
 
     </dependencies>
 

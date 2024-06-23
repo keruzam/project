@@ -1,0 +1,30 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="
+                 http://www.springframework.org/schema/security
+                 http://www.springframework.org/schema/security/spring-security.xsd
+                 http://www.springframework.org/schema/beans
+                 http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- HTTP security configurations -->
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/**" access="permitAll"/>
+        <intercept-url pattern="/views/**" access="permitAll"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/user/**" access="hasRole('USER')"/>
+        <form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login?error"/>
+        <logout logout-success-url="/login?logout"/>
+    </http>
+
+    <!-- Authentication manager configuration -->
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="{noop}password" authorities="ROLE_USER"/>
+                <user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

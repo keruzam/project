@@ -6,7 +6,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@ContextConfiguration(locations = "classpath:beans.xml")
+@ContextConfiguration(locations = "classpath:/WEB-INF/context.xml")
 public class HibernateConnectionTest extends AbstractTestNGSpringContextTests {
 
 	@Inject

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pl.keruzam.Service2Example;
 import pl.keruzam.ServiceExample;
 
-@ContextConfiguration(locations = {"classpath:beans.xml"})
+@ContextConfiguration(locations = {"classpath:/WEB-INF/context.xml"})
 public class SpringContextTest extends AbstractTestNGSpringContextTests {
 
 	@Inject

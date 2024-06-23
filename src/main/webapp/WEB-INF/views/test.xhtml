@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Spring Context and Jakarta Faces Integration</title>
+</h:head>
+
+<h:body>
+    <h1>Spring Context and Jakarta Faces Integration</h1>
+
+    <h2>Spring Bean Access:</h2>
+    <p>Message from Spring bean: #{testBean.message}</p>
+
+    <h2>PrimeFaces Components:</h2>
+    <p:panel header="PrimeFaces Panel">
+        <p:inputText id="inputText" value="#{testBean.inputText}"/>
+        <p:commandButton value="Submit" actionListener="#{testBean.submit}" update="output"/>
+    </p:panel>
+
+    <h2>Output:</h2>
+    <h:panelGroup id="output">
+        <p:messages autoUpdate="true"/>
+        <p>Output: #{testBean.output}</p>
+    </h:panelGroup>
+</h:body>
+
+</html>

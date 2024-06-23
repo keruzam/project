@@ -45,4 +45,7 @@
     </bean>
 
     <tx:annotation-driven/>
+
+    <!-- Enable Spring Security -->
+    <import resource="classpath:/WEB-INF/security.xml"/>
 </beans>
