@@ -16,14 +16,16 @@
     <h2>PrimeFaces Components:</h2>
     <p:panel header="PrimeFaces Panel">
         <p:inputText id="inputText" value="#{testBean.inputText}"/>
-        <p:commandButton value="Submit" actionListener="#{testBean.submit}" update="output"/>
+        <p:commandButton value="Submit" actionListener="#{testBean.submit()}" update="output" ajax="false"/>
+        <p:commandButton value="DoSomething" actionListener="#{testBean.doSomething()}"/>
+        <!--<p:button onclick="#{testBean.doSomething()}" value="test"/>-->
+        <p:commandButton value="gotoeditor"
+                         onclick="window.location.href='views/editor.xhtml'; return false;"/>
     </p:panel>
 
     <h2>Output:</h2>
-    <h:panelGroup id="output">
-        <p:messages autoUpdate="true"/>
-        <p>Output: #{testBean.output}</p>
-    </h:panelGroup>
+    <!--<p:messages autoUpdate="true"/> -->
+    <p:outputLabel id="output" value="#{testBean.output}"/>
 </h:body>
 
 </html>

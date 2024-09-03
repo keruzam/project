@@ -10,9 +10,14 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- Spring Request Context Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/context.xml</param-value>
+        <param-value>classpath:/spring/context.xml</param-value>
     </context-param>
 
     <!-- JSF configuration -->
@@ -40,7 +45,7 @@
 
     <!-- Welcome file -->
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
 
 </web-app>
