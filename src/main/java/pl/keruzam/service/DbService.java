@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
-import pl.keruzam.model.Transaction;
+import pl.keruzam.model.BankTransaction;
 
 @Service
 public class DbService {
@@ -13,16 +13,16 @@ public class DbService {
 	@Inject
 	SessionFactory sessionFactory;
 
-	public Long save(Transaction transaction) {
+	public Long save(BankTransaction bankTransaction) {
 		Session session = openSession();
 		org.hibernate.Transaction hibernateTransaction = null;
 		Long id = null;
 		try {
 			if (session != null) {
 				hibernateTransaction = session.beginTransaction();
-				session.persist(transaction);
+				session.persist(bankTransaction);
 				hibernateTransaction.commit();
-				id = transaction.getId();
+				id = bankTransaction.getId();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,11 +47,11 @@ public class DbService {
 	}
 
 
-	public Transaction load(Long id) {
+	public BankTransaction load(Long id) {
 		Session session = openSession();
 		try {
 			if (session != null) {
-				return session.get(Transaction.class, id);
+				return session.get(BankTransaction.class, id);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,5 +61,25 @@ public class DbService {
 			}
 		}
 		return null;
+	}
+
+	public void delete(Long id) {
+		Session session = openSession();
+		org.hibernate.Transaction hibernateTransaction = null;
+		try {
+			if (session != null) {
+				hibernateTransaction = session.beginTransaction();
+				BankTransaction bankTransaction = session.get(BankTransaction.class, id);
+				session.remove(bankTransaction);
+				hibernateTransaction.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			hibernateTransaction.rollback();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 }

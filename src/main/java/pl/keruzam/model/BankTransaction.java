@@ -7,12 +7,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "transactions")
-public class Transaction {
+@Table(name = "bank_transaction")
+public class BankTransaction {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transactions_id_seq")
-	@SequenceGenerator(name = "transactions_id_seq", sequenceName = "transactions_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_transaction_id_seq")
+	@SequenceGenerator(name = "bank_transaction_id_seq", sequenceName = "bank_transaction_id_seq", allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 

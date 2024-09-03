@@ -3,7 +3,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.keruzam.model.Transaction;
+import pl.keruzam.model.BankTransaction;
 import pl.keruzam.service.DbService;
 
 import java.math.BigDecimal;
@@ -17,18 +17,20 @@ public class DbServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testSave() {
-		Transaction transaction = new Transaction();
-		transaction.setNote("test");
-		transaction.setQuota(new BigDecimal("12.21"));
-		transaction.setOperationDate(new Date());
-		transaction.setOrderDate(new Date());
+		BankTransaction bankTransaction = new BankTransaction();
+		bankTransaction.setNote("test");
+		bankTransaction.setQuota(new BigDecimal("12.21"));
+		bankTransaction.setOperationDate(new Date());
+		bankTransaction.setOrderDate(new Date());
 
-		Long id = dbService.save(transaction);
+		Long id = dbService.save(bankTransaction);
 
 		Assert.assertNotNull(id);
 
-		Transaction loaded = dbService.load(id);
+		BankTransaction loaded = dbService.load(id);
 
 		Assert.assertEquals(loaded.getQuota(), BigDecimal.valueOf(12.21));
+
+		//dbService.delete(loaded.getId());
 	}
 }

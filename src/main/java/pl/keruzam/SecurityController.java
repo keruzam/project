@@ -15,17 +15,16 @@ public class SecurityController {
 
 	@GetMapping("/login")
 	public String login() {
-
-		return "login.xhtml";  // refers to login.xhtml
+		return "login";
 	}
 
 	@PostMapping("/perform_login")
 	public String performLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null && auth.isAuthenticated()) {
-			return "redirect:/home.xhtml";
+			return "redirect:/views/home.xhtml";
 		}
-		return "login.xhtml";  // stay on login page if authentication fails
+		return "login";
 	}
 
 	@GetMapping("/logout")

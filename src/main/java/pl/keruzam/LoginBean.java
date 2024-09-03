@@ -30,7 +30,7 @@ public class LoginBean {
 	public String login() {
 		// Your login logic here
 		if ("user".equals(username) && "pass".equals(password)) {
-			return "home?faces-redirect=true";
+			return "/views/home.xhtml?faces-redirect=true";
 		} else {
 			return "login?faces-redirect=true&error=true";
 		}
