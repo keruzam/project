@@ -2,6 +2,7 @@ package pl.keruzam;
 
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
+import org.primefaces.PrimeFaces;
 
 @ViewScoped
 @Named
@@ -12,7 +13,7 @@ public class TestBean {
 	private String output;
 
 	public void submit() {
-		output = "You entered: " + inputText;
+		this.output = "You entered: " + inputText;
 	}
 
 	// Getters and setters
@@ -41,6 +42,6 @@ public class TestBean {
 	}
 
 	public void doSomething() {
-		//PrimeFaces.current().executeScript("PF('growl').renderMessage({summary:'Test', detail:'PrimeFaces is working!', severity:'info'});");
+		PrimeFaces.current().executeScript("PF('growl').renderMessage({summary:'Test', detail:'PrimeFaces is working!', severity:'info'});");
 	}
 }

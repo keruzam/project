@@ -3,10 +3,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.keruzam.Service2Example;
-import pl.keruzam.ServiceExample;
+import pl.keruzam.service.Service2Example;
+import pl.keruzam.service.ServiceExample;
 
-@ContextConfiguration(locations = {"classpath:/WEB-INF/context.xml"})
+@ContextConfiguration(locations = {"classpath:/spring/context.xml"})
 public class SpringContextTest extends AbstractTestNGSpringContextTests {
 
 	@Inject

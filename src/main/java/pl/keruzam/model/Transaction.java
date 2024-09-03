@@ -14,7 +14,7 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transactions_id_seq")
 	@SequenceGenerator(name = "transactions_id_seq", sequenceName = "transactions_id_seq", allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
-	private Integer id;
+	private Long id;
 
 	@Column(name = "operation_date", nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -31,11 +31,11 @@ public class Transaction {
 	private BigDecimal quota;
 
 	// Getters and Setters
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
