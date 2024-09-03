@@ -42,6 +42,23 @@
         <security.version>6.3.1</security.version>
     </properties>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
         <!-- @PostConstruct annotation -->
         <dependency>
@@ -67,6 +84,12 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>-->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
@@ -150,7 +173,7 @@
             <version>6.5.2.Final</version>
         </dependency>
 
-        <!-- Jakarta Transaction API -->
+        <!-- Jakarta BankTransaction API -->
         <dependency>
             <groupId>jakarta.transaction</groupId>
             <artifactId>jakarta.transaction-api</artifactId>
@@ -182,14 +205,22 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- PrimeFaces
+        <!-- PrimeFaces -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>14.0.0</version>
             <classifier>jakarta</classifier>
-        </dependency>-->
+        </dependency>
+
+        <!-- xss attacks texteditor -->
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>20240325.1</version>
+        </dependency>
 
     </dependencies>
+
 
 </project>
