@@ -220,6 +220,33 @@
             <version>20240325.1</version>
         </dependency>
 
+        <!-- XML BIND -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+        -->
+
+        <!-- This should be the implementation of jakarta.xml.bind-api  (https://stackoverflow.com/a/72151763/529286)    -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+
     </dependencies>
 
 
