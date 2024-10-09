@@ -1,0 +1,35 @@
+<ehcache updateCheck="false" defaultTransactionTimeoutInSeconds="6000"
+        dynamicConfig="false">
+        
+	<defaultCache overflowToDisk="false" eternal="false" 
+		maxElementsInMemory="2000" diskPersistent="false" statistics="true"
+		transactionalMode="off">
+	</defaultCache> 
+	<!-- 
+	<cache
+        name="org.hibernate.cache.spi.UpdateTimestampsCache"
+        maxElementsInMemory="8000"
+        eternal="true" statistics="true"
+        overflowToDisk="true" transactionalMode="off">   
+          <cacheEventListenerFactory
+                        class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                        properties="replicateAsynchronously=true, replicatePuts=true,
+                        replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true" />
+
+     </cache>
+     
+    <cache
+        name="org.hibernate.cache.internal.StandardQueryCache"
+        maxElementsInMemory="2000"
+        eternal="true" statistics="true"
+        overflowToDisk="false" transactionalMode="off">       
+            <cacheEventListenerFactory
+                                class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                                properties="replicateAsynchronously=true, replicatePuts=false,
+                                replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true" />
+     </cache>
+      -->
+                    
+     
+		
+</ehcache>

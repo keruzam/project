@@ -8,5 +8,5 @@
 		FROM BankTransaction bt
 		WHERE bt.id > 0
 	]]></query>
-
+    
 </hibernate-mapping>

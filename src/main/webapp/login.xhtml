@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
->
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="primefaces">
+
 
 <h:head>
     <title>Login</title>
+    #{testBean.init()}
 </h:head>
 
 <h:body>
     <h:form prependId="false">
 
         <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
-            <h2>Please login</h2>
-
+            <h2>Please login #{testBean.message} test</h2>
+gg
             <!-- Corrected error message rendering using JSF EL -->
             <p:outputLabel value="Login failed!" styleClass="red"
                            rendered="#{not empty param['error']}"/>
@@ -28,4 +30,4 @@
 
     </h:form>
 </h:body>
-</html>
+</ui:composition>

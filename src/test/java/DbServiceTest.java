@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 import jakarta.inject.Inject;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -5,9 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.keruzam.model.BankTransaction;
 import pl.keruzam.service.DbService;
-
-import java.math.BigDecimal;
-import java.util.Date;
+import pl.keruzam.service.cmm.lib.Date;
 
 @ContextConfiguration(locations = "classpath:/spring/context.xml")
 public class DbServiceTest extends AbstractTestNGSpringContextTests {

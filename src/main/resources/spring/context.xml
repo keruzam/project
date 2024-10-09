@@ -12,18 +12,25 @@
     <context:component-scan base-package="pl.keruzam"/>
 
     <!-- Load properties from external file -->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean id="propertyConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="location" value="classpath:db.properties"/>
+    </bean>
+
+    <bean class="pl.keruzam.service.cmm.context.ApplicationContext" depends-on="sessionFactory">
+        <constructor-arg index="0" value="${app.location}"/>
+        <constructor-arg index="1" value="${app.file.dir}"/>
+        <constructor-arg index="2" value="${app.version}"/>
+        <constructor-arg index="3" value="${app.port}"/>
     </bean>
 
     <!-- DataSource configuration -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" value="${driverClassName}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-        <property name="initialSize" value="${initialSize}"/>
-        <property name="maxTotal" value="${maxTotal}"/>
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="initialSize" value="${db.initialSize}"/>
+        <property name="maxTotal" value="${db.maxTotal}"/>
     </bean>
 
     <!-- SessionFactory configuration -->
@@ -37,10 +44,34 @@
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto"></prop>-->
+                <prop key="hibernate.format_sql">true</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">validate</prop>-->
                 <prop key="hibernate.transform_hbm_xml.enabled">true</prop>
+                <prop key="hibernate.default_schema">${hibernate.schema}</prop>
+                <prop key="hibernate.query.startup_check">true</prop>
+                <prop key="hibernate.max_fetch_depth">2</prop>
+                <prop key="hibernate.default_batch_fetch_size">4</prop>
+                <prop key="hibernate.jdbc.batch_size">10</prop>
+                <prop key="hibernate.order_inserts">true</prop>
+                <prop key="hibernate.order_updates">true</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <prop key="hibernate.jdbc.batch_versioned_data">true</prop>
+                <prop key="net.sf.ehcache.configurationResourceName">${ehcache.config}</prop>
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.use_structured_entries">false</prop>
+                <prop key="hibernate.generate_statistics">false</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.use_reference_entries">true</prop>
+
+                <!-- <prop key="hibernate.physical_naming_strategy">pl.keruzam.db.SnakeCasePhysicalNamingStrategy</prop> -->
+
+                <!-- Naming strategies
+                <prop key="hibernate.physical_naming_strategy">pl.keruzam.db.SnakeCasePhysicalNamingStrategy</prop>-->
+                <!-- <prop key="hibernate.globally_quoted_identifiers">true</prop>-->
+                <!--<prop key="hibernate.auto_quote_keyword">true</prop>-->
             </props>
         </property>
     </bean>

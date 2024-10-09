@@ -1,6 +1,8 @@
 package pl.keruzam;
 
+import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.primefaces.PrimeFaces;
 
@@ -14,6 +16,11 @@ public class TestBean {
 	private String message = "Hello from Spring!";
 	private String inputText;
 	private String output;
+
+
+	public void init() {
+		this.message = "Zmiana tekstu";
+	}
 
 	public void submit() {
 		this.output = "You entered: " + inputText;

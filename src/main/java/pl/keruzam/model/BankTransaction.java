@@ -1,25 +1,35 @@
 package pl.keruzam.model;
 
-
-import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-
 import java.math.BigDecimal;
-import java.util.Date;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import org.hibernate.annotations.GenericGenerator;
+import pl.keruzam.service.cmm.StreamSequenceGenerator;
+import pl.keruzam.service.cmm.lib.Date;
 
 @Entity
 @Table(name = "bank_transaction")
 public class BankTransaction {
 
-
 	private Long id;
 
-	@Column(name = "operation_date", columnDefinition = "DateTime", nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "value", column = @Column(name = "peration_date")) })
 	private Date operationDate;
 
 	@Column(name = "order_date", columnDefinition = "DateTime", nullable = false)
-	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 
 	@Column(name = "note", columnDefinition = "VarChar255", nullable = false)
@@ -29,9 +39,11 @@ public class BankTransaction {
 	private BigDecimal quota;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_transaction_id_seq")
-	@SequenceGenerator(name = "bank_transaction_id_seq", sequenceName = "bank_transaction_id_seq", allocationSize = 1)
-	@Column(name = "id", updatable = false, nullable = false, columnDefinition ="Id")
+	@GenericGenerator(
+			name = "s_bank_transaction", type = StreamSequenceGenerator.class, parameters = { @org.hibernate.annotations.Parameter(
+			name = "sequence_name", value = "s_bank_transaction") })
+	@GeneratedValue(generator = "s_bank_transaction")
+	@Column(name = "id")
 	@Access(AccessType.PROPERTY)
 	public Long getId() {
 		return id;
