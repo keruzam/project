@@ -39,7 +39,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto"></prop>-->
+                <!-- <prop key="hibernate.hbm2ddl.auto">validate</prop> -->
                 <prop key="hibernate.transform_hbm_xml.enabled">true</prop>
             </props>
         </property>
