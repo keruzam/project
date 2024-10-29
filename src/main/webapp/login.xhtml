@@ -12,14 +12,14 @@
     <h:form prependId="false">
 
         <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
-            <h2>Please login</h2>
+            <h2>Login Page</h2>
 
             <!-- Corrected error message rendering using JSF EL -->
             <p:outputLabel value="Login failed!" styleClass="red"
                            rendered="#{not empty param['error']}"/>
 
             <!-- Bind input fields to a managed bean -->
-            <p:inputText id="username" value="#{loginBean.username}" placeholder="User name"/>
+            <p:inputText id="username" value="#{loginBean.username}" placeholder="User"/>
             <p:password id="password" value="#{loginBean.password}" placeholder="Password"/>
 
             <!-- Add action to commandButton to call a method in the backing bean -->

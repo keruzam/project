@@ -1,21 +1,30 @@
 package pl.keruzam;
 
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.primefaces.PrimeFaces;
+import pl.keruzam.model.BankTransaction;
+import pl.keruzam.service.DbService;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ViewScoped
 @Named
 public class TestBean {
 
+	@Inject
+	DbService dbService;
+
 	private String message = "Hello from Spring!";
 	private String inputText;
 	private String output;
 
 	public void submit() {
+		addTransaction();
 		this.output = "You entered: " + inputText;
 	}
 
@@ -46,6 +55,16 @@ public class TestBean {
 
 	public void doSomething() {
 		PrimeFaces.current().executeScript("PF('growl').renderMessage({summary:'Test', detail:'PrimeFaces is working!', severity:'info'});");
+	}
+
+	public void addTransaction() {
+		BankTransaction bankTransaction = new BankTransaction();
+		bankTransaction.setQuota(BigDecimal.valueOf(123));
+		bankTransaction.setOrderDate(new Date());
+		bankTransaction.setOperationDate(new Date());
+		bankTransaction.setNote("notatka");
+
+		dbService.save(bankTransaction);
 	}
 
 	public List<BankTransactionRow> getBankTransactions() {

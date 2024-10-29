@@ -38,7 +38,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring.version>6.1.10</spring.version>
+        <spring.version>6.1.14</spring.version>
         <security.version>6.3.1</security.version>
     </properties>
 
@@ -143,8 +143,9 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
+            <version>42.7.4</version>
         </dependency>
+
 
         <!-- Testing -->
         <dependency>

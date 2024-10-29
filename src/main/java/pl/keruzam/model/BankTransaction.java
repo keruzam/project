@@ -1,8 +1,17 @@
 package pl.keruzam.model;
 
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -29,9 +38,9 @@ public class BankTransaction {
 	private BigDecimal quota;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_transaction_id_seq")
-	@SequenceGenerator(name = "bank_transaction_id_seq", sequenceName = "bank_transaction_id_seq", allocationSize = 1)
-	@Column(name = "id", updatable = false, nullable = false, columnDefinition ="Id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_bank_transaction")
+	@SequenceGenerator(name = "s_bank_transaction", sequenceName = "s_bank_transaction", allocationSize = 10)
+	@Column(name = "id", updatable = false, nullable = false, columnDefinition = "Id")
 	@Access(AccessType.PROPERTY)
 	public Long getId() {
 		return id;

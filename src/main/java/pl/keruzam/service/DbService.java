@@ -2,6 +2,7 @@ package pl.keruzam.service;
 
 
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,11 @@ import pl.keruzam.model.BankTransaction;
 public class DbService {
 
 	@Inject
-	SessionFactory sessionFactory;
+	EntityManagerFactory entityManagerFactory;
 
 	public Long save(BankTransaction bankTransaction) {
+		//entityManager.createEntityManager().persist(bankTransaction);
+		//return bankTransaction.getId();
 		Session session = openSession();
 		org.hibernate.Transaction hibernateTransaction = null;
 		Long id = null;
@@ -38,6 +41,7 @@ public class DbService {
 	private Session openSession() {
 		try {
 			System.out.println("return new session");
+			SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 			return sessionFactory.openSession();
 		} catch (Exception e) {
 			e.printStackTrace();
